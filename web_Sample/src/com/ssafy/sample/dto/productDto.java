@@ -1,14 +1,14 @@
 package com.ssafy.sample.dto;
 
-public class UserDto {
+public class productDto {
 	
 	private String code; // long형이 일반적 
 	private String model;
 	private int price;
 	
-	public UserDto() {}
+	public productDto() {}
 	
-	public UserDto(String code, String model, int price) {
+	public productDto(String code, String model, int price) {
 		super();
 		this.code = code;
 		this.model = model;
