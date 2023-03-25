@@ -3,10 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="../include/head.jsp" %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	<%@ include file="../include/nav.jsp" %>
 	<h1>목록</h1>
-</body>
-</html>
+	
+	
+<%@ include file="../include/footer.jsp" %>
