@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.ssafy.sample.dto.productDto;
 import com.ssafy.sample.model.service.ProductService;
 import com.ssafy.sample.model.service.ProductServiceImpl;
@@ -20,13 +21,13 @@ public class ProductServlet extends HttpServlet {
     ProductService ps = ProductServiceImpl.getInstance();
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		process(request,response);
+				process(request,response);
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		process(request,response);
+				process(request,response);
 	}
 
-	protected void process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	protected void process(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 	
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
@@ -39,13 +40,18 @@ public class ProductServlet extends HttpServlet {
 		}
 		
 	}
-	protected void ProductList(HttpServletRequest request, HttpServletResponse response) {
+	protected void ProductList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String strLimit = request.getParameter("limit");
 		String strOffset = request.getParameter("offset");
 		
 		int limit = Integer.parseInt(strLimit);
 		int offset = Integer.parseInt(strOffset);
-		List<productDto> productlist = ProductService.ProductList(limit,offset);
+		List<productDto> productlist = ps.ProductList(limit,offset);
+		
+		Gson gson = new Gson();
+		String jsonStr = gson.toJson(productlist);
+		System.out.println(jsonStr);
+		response.getWriter().write(jsonStr);
 	}
 	protected void regist(HttpServletRequest request, HttpServletResponse response) {
 		
