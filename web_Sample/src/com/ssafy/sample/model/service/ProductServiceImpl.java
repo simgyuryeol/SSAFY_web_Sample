@@ -26,6 +26,11 @@ public class ProductServiceImpl implements ProductService{
 	public List<productDto> ProductList(int limit, int offset) {
 		return productdao.ProductList(limit, offset);
 	}
+
+	@Override
+	public int ProductDelete(productDto productdto) {
+		return productdao.ProductDelete(productdto);
+	}
 	
 	
 }

@@ -52,6 +52,35 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
+	public int ProductDelete(productDto productdto) { //상품 삭제
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		int ret = -1;
+		
+		try {
+			con = DBUtil.getInstance().getConnection();
+			//delete
+			StringBuilder sb = new StringBuilder();
+			sb.append(" DELETE FROM product ")
+			.append(" WHERE code = ? ");
+			
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setString(1,productdto.getCode());
+			
+			ret = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.getInstance().close(pstmt, con);
+		}
+		
+		return ret;
+	}
+	
+	
+	@Override
 	public List<productDto> ProductList(int limit, int offset) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -92,6 +121,9 @@ public class ProductDaoImpl implements ProductDao {
 		return list;
 		
 	}
+
+	
+
 	
 	
 	

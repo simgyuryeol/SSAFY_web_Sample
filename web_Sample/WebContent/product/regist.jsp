@@ -12,7 +12,7 @@
 	<div class="container p-4">
 	
 	  <h2>상품 정보 등록</h2>
-	  <form id="registForm" >
+	  <form id="registForm"  action="/product/delete" >
 	  	<input type="hidden" name="action" value="">
 	    <div class="form-group">
 	      <label for="productCode">고유번호</label>
@@ -28,10 +28,12 @@
 	    </div>
 
 	    <button type="submit" class="btn btn-primary" id="regist">등록</button>
-	    <a class="btn btn-secondary" href="#" >취소</a>
+	    <a class="btn btn-secondary" href="../index.jsp" >취소</a>
 	  </form>
 	
 	
 	</div>
+	
+	
 	<%-- --%>
 <%@ include file="/include/footer.jsp" %>
